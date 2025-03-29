@@ -1,0 +1,44 @@
+{
+  "NavItemTitle": {
+    "about": "About Us",
+    "games": "Games",
+    "partners": "Partners",
+    "contact": "Contact Us"
+  },
+  "NavLanguage": {
+    "vi": "Vietnamese",
+    "en": "English"
+  },
+  "Banner": {
+    "day": "Days",
+    "hour": "Hours",
+    "minute": "Minutes",
+    "second": "Seconds",
+    "comingSoon": "We’re Getting Ready",
+    "description": "We will back to something amazing. Getting the latest updates about our games. Please sign up to our newsletter.",
+    "emailPlaceholder": "Enter your email"
+  },
+  "About": {
+    "title": "About Us",
+    "description": "Browse our selection of free online games and have a great time without leaving the site! Our Kids Games option also includes game reviews, extensive game cheats and walkthroughs, and much more. We have exclusive free downloads, videos, and articles as well. Etech reviews the most popular kids games from all the most popular video gaming platforms, so you don’t need to search around for fun anywhere else on the Internet. Explore a whole new world of gaming on Etech.",
+    "user": "Users",
+    "milion": "M",
+    "game": "Games",
+    "24HourTitle": "24 - Hour",
+    "24HourDescription": "24/7 access ensures operators' businesses runs smoothly all year long.",
+    "designTitle": "Design",
+    "designDescription": "Combining imaginative universes, play dynamics, and unprecedented gameplay, our games transcend the boundaries of the virtual world by weaving innovative gameplay.",
+    "teamTitle": "Team",
+    "teamDescription": "Etech is an award-winning, international studio of designers, artists, animators and producers that create content for the biggest names in film and video games."
+  },
+  "Game": {
+    "title": "Our Games",
+    "description": "As a pioneer of mobile app gamification, we take pride in originality and individuality, providing global players with state-of-the-art games that feature splendid storylines, sensational sound effects and magnificent animation that never cease to impress."
+  },
+  "Partner": {
+    "title": "Our Partners"
+  },
+  "Contact": {
+    "emailPlaceholder": "Enter your email"
+  }
+}
