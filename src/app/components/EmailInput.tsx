@@ -13,7 +13,7 @@ const EmailInput: React.FC<EmailInputProps> = ({
   buttonColor,
 }) => {
   return (
-    <div className="relative w-full max-w-md z-10">
+    <div className="relative w-full max-w-md z-10 px-4">
       <input
         type="email"
         placeholder={placeholder}
