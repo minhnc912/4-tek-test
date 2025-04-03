@@ -10,6 +10,7 @@ import Partner4 from "@/app/assets/images/partners/partner4.webp";
 import Partner5 from "@/app/assets/images/partners/partner5.webp";
 import SlideLeft from "../assets/icons/slide-left";
 import SlideRight from "../assets/icons/slide-right";
+import Image from "next/image";
 
 const partners = [
   { id: 1, src: Partner1, alt: "EA Games" },
@@ -18,58 +19,62 @@ const partners = [
   { id: 4, src: Partner4, alt: "Walt Disney" },
   { id: 5, src: Partner5, alt: "Book Pro Game Show" },
 ];
+
+const duplicatedPartners = [...partners, ...partners];
+
 const OurPartners = () => {
+  const [index, setIndex] = useState<number>(0);
+  const [itemWidth, setItemWidth] = useState<number>(188 + 12);
+  const [offset, setOffset] = useState<number>(0);
+
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const [resetCounter, setResetCounter] = useState<number>(0);
+
   const t = useTranslations("Partner");
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState(0);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    startAutoSlide();
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+    const updateSize = () => {
+      if (window.innerWidth >= 1024) {
+        setItemWidth(260 + 40);
+        setOffset(0);
+      } else {
+        setOffset(-5);
+        setItemWidth(188 + 12);
       }
     };
+
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  const startAutoSlide = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => {
+  useEffect(() => {
+    const interval = setInterval(() => {
       nextSlide();
-      startAutoSlide();
     }, 3000);
-  };
-
-  const resetAutoSlide = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    startAutoSlide();
-  };
+    return () => clearInterval(interval);
+  }, [resetCounter]);
 
   const nextSlide = () => {
-    if (sliderRef.current) {
-      const slideWidth =
-        (sliderRef.current.firstElementChild as HTMLElement)?.clientWidth ||
-        200;
-      setPosition((prev) =>
-        prev - slideWidth < -slideWidth * (partners.length - 1)
-          ? 0
-          : prev - slideWidth
-      );
-    }
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setResetCounter((prev) => prev + 1);
+
+    setTimeout(() => {
+      setIsAnimating(false);
+      setIndex((prev) => (prev + 1) % partners.length);
+    }, 100);
   };
 
   const prevSlide = () => {
-    if (sliderRef.current) {
-      const slideWidth =
-        (sliderRef.current.firstElementChild as HTMLElement)?.clientWidth ||
-        200;
-      setPosition((prev) =>
-        prev + slideWidth > 0
-          ? -slideWidth * (partners.length - 1)
-          : prev + slideWidth
-      );
-    }
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setResetCounter((prev) => prev + 1);
+
+    setTimeout(() => {
+      setIsAnimating(false);
+      setIndex((prev) => (prev === 0 ? partners.length - 1 : prev - 1));
+    }, 100);
   };
 
   return (
@@ -81,41 +86,47 @@ const OurPartners = () => {
         <h1 className="text-6xl font-black font-playfair leading-[60px]">
           {t("title")}
         </h1>
-        <div className="relative overflow-hidden max-w-5xl mx-auto mt-20">
-          <motion.div
-            ref={sliderRef}
-            className="flex gap-10"
-            animate={{ x: position }}
-            transition={{ ease: "easeInOut", duration: 0.5 }}
-            drag="x"
-            dragConstraints={{ left: -600, right: 0 }}
-          >
-            {partners.map((partner) => (
-              <motion.div key={partner.id} className="flex-shrink-0 w-40">
-                <img
-                  src={partner.src.src}
-                  alt={partner.alt}
-                  className="mx-auto h-24 object-contain"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-
+        <div className="flex items-center justify-center max-w-[1540px] mx-auto mt-20">
           <button
             onClick={() => {
               prevSlide();
-              resetAutoSlide();
+              // startAutoSlide();
             }}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 rounded-md cursor-pointer"
+            className="p-2 rounded-md cursor-pointer"
           >
             <SlideLeft />
           </button>
+          <div className="overflow-hidden w-full flex justify-center">
+            <motion.div
+              className="flex gap-3 lg:gap-10"
+              animate={{
+                x: `calc(-${index * itemWidth}px ${
+                  offset ? `- ${offset}%` : ""
+                })`,
+              }}
+              transition={{ type: "tween", duration: 0.5 }}
+            >
+              {duplicatedPartners.map((logo, i) => (
+                <div key={i} className="shrink-0 w-[188px] lg:w-[260px]">
+                  <Image
+                    // src={logo}
+                    src={logo.src}
+                    alt={`Partner ${i + 1}`}
+                    width={260}
+                    height={100}
+                    className="w-full object-contain"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
           <button
             onClick={() => {
               nextSlide();
-              resetAutoSlide();
+              // startAutoSlide();
             }}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 rounded-md cursor-pointer"
+            className="p-2 rounded-md cursor-pointer"
           >
             <SlideRight />
           </button>

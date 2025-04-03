@@ -6,7 +6,7 @@ import Banner from "../components/Banner";
 
 const Page = () => {
   return (
-    <div className="flex flex-col gap-32">
+    <div className="flex flex-col gap-12 lg:gap-10 2xl:gap-32">
       <Banner />
       <AboutUs />
       <OurGames />

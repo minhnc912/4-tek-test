@@ -47,7 +47,7 @@ const LanguageSelector = () => {
   return (
     <div className="relative">
       <button
-        className="flex items-center gap-2 w-20 h-10 md:bg-transparent bg-[#F6F6F6] rounded-lg border border-[#AFAFAF] md:border-none text-white p-2 cursor-pointer"
+        className="flex items-center gap-2 w-20 h-10 md:bg-transparent bg-[#F6F6F6] rounded-lg border border-[#AFAFAF] md:border-none text-white cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
         <Image

@@ -21,18 +21,21 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-screen fixed top-0 left-0 right-0 z-50 flex justify-between items-center gap-20 px-4 md:px-20 py-6 md:py-10 bg-gradient-to-b from-black/50 to-black/0 text-white">
-      <Link href="/">
+    <header className="w-screen fixed top-0 left-0 right-0 z-50 flex justify-between items-center gap-20 px-4 lg:px-12 2xl:px-20 py-5 lg:py-0 2xl:py-5 bg-gradient-to-b from-black/50 to-black/0 text-white">
+      <Link href="/" className="hidden 2xl:block ">
         <WhiteLogo width="109" />
+      </Link>
+      <Link href="/" className="block 2xl:hidden ">
+        <WhiteLogo width="64" />
       </Link>
 
       {/* Desktop Navigation */}
-      <nav className="max-w-[710px] w-full hidden md:flex justify-between items-center">
+      <nav className="lg:max-w-lg 2xl:max-w-[710px] w-full hidden md:flex justify-between items-center">
         {navItems.map((item) => (
           <a
             key={item.title}
             href={item.url}
-            className="font-bold uppercase text-center"
+            className="font-bold uppercase text-center text-[10px] 2xl:text-sm"
           >
             {item.title}
           </a>
