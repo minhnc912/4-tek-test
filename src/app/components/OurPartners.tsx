@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Partner1 from "@/app/assets/images/partners/partner1.webp";
 import Partner2 from "@/app/assets/images/partners/partner2.webp";
