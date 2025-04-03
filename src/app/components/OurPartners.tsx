@@ -79,7 +79,7 @@ const OurPartners = () => {
 
   return (
     <div
-      className="w-full py-10 md:py-[120px] mt-32 flex flex-col items-center gap-20 px-0 md:px-20 bg-neutral-100"
+      className="w-full py-10 lg:py-[120px] mt-32 flex flex-col items-center gap-20 px-0 lg:px-20 bg-neutral-100"
       id="partners"
     >
       <div className="container mx-auto text-center">

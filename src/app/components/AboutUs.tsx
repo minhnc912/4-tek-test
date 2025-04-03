@@ -33,9 +33,9 @@ const AboutUs = () => {
   return (
     <div
       id="about"
-      className="mt-20 md:mt-0 mx-auto w-full md:max-w-3xl 2xl:max-w-[1160px] flex flex-col justify-center items-center"
+      className="mt-20 lg:mt-0 mx-auto w-full lg:max-w-3xl 2xl:max-w-[1160px] flex flex-col justify-center items-center"
     >
-      <div className="flex flex-col md:flex-row gap-10 lg:gap-5 2xl:gap-10">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-5 2xl:gap-10">
         <div className="flex-1/2 flex flex-col justify-between px-0">
           <div className="flex flex-col px-4 gap-4 2xl:gap-10">
             <h1 className="font-black text-[40px] lg:text-[42px] 2xl:text-6xl font-playfair">
@@ -45,7 +45,7 @@ const AboutUs = () => {
               {t("description")}
             </p>
           </div>
-          <div className="flex flex-row gap-4 mt-10 px-4 2xl:mt-20 md:flex-col md:gap-10">
+          <div className="flex flex-row gap-4 mt-10 px-4 2xl:mt-20 lg:flex-col lg:gap-10">
             <div className="flex flex-col justify-start items-start gap-1">
               <h1 className="text-[#079BEE] font-bold text-5xl 2xl:text-[80px]">
                 600
@@ -68,7 +68,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1/2 grow bg-zinc-100 flex flex-col justify-center items-center gap-10 py-10 lg:gap-5 2xl:gap-10">
+        <div className="flex-1/2 grow bg-zinc-100 flex flex-col justify-center items-center gap-10 py-10 px-4 lg:gap-5 2xl:gap-10">
           {lists.map((item) => (
             <div
               key={item.title}
@@ -98,7 +98,7 @@ const AboutUs = () => {
           <Image src={MapImage} alt="Map" fill className="object-contain" />
         </motion.div>
         <motion.div
-          className="relative z-10 -mt-32 md:-mt-60"
+          className="relative z-10 -mt-32 lg:-mt-60"
           animate={{
             y: [-10, 10, -10],
             rotate: [-2, 2, -2],
@@ -114,7 +114,7 @@ const AboutUs = () => {
             alt="Witch"
             width={533}
             height={428}
-            className="w-[300px] md:w-sm 2xl:w-[533px]"
+            className="w-[300px] lg:w-sm 2xl:w-[533px]"
           />
         </motion.div>
       </div>
