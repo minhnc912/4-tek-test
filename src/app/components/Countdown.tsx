@@ -57,10 +57,10 @@ const Countdown: React.FC<CountdownProps> = ({ day, hour, minute, second }) => {
 
   return (
     <div className="flex items-center justify-center relative z-10 mt-9 md:mt-5">
-      <div className="bg-white w-full max-w-[343px] lg:max-w-2xl 2xl:max-w-[756px] px-[26px] md:px-10 py-6 flex space-x-4 lg:space-x-9 2xl:space-x-14 rounded-3xl h-[118px] 2xl:h-[150px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)]">
+      <div className="bg-white w-full max-w-[343px] md:max-w-2xl 2xl:max-w-[756px] px-[26px] md:px-10 py-6 flex space-x-4 md:space-x-9 2xl:space-x-14 rounded-3xl h-[118px] 2xl:h-[150px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)]">
         {countdownTimes.map((item, index) => (
           <div
-            className="flex gap-4 lg:gap-9 2xl:gap-14 items-center"
+            className="flex gap-4 md:gap-9 2xl:gap-14 items-center"
             key={index}
           >
             <div className="flex flex-col justify-center items-center">
